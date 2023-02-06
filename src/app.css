@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+body {
+	background: rgb(52, 89, 16);
+	background: linear-gradient(
+		93deg,
+		rgba(52, 89, 16, 1) 1%,
+		#6f4112 38%,
+		#e764ba 100%
+	);
+	margin: 0;
+	padding: 0;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
