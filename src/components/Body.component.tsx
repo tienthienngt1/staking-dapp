@@ -4,7 +4,6 @@ import StackConfig from "./StackConfig.component";
 import { HeaderT } from "./Header.component";
 import { connectWallet } from "func/connectWallet";
 import { useEffect, useState } from "react";
-import ModelStake from "./ModelStake.component";
 import {
 	getAmountStake,
 	getBalance,

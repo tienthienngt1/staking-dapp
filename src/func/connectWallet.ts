@@ -1,3 +1,5 @@
+import { CHAIN_ID } from "config";
+
 declare var window: any;
 
 export const connectWallet = async () => {
@@ -6,10 +8,10 @@ export const connectWallet = async () => {
 			const account = await window.ethereum.request({
 				method: "eth_requestAccounts",
 			});
-			if (window.ethereum.chainId !== "0x5") {
+			if (window.ethereum.chainId !== CHAIN_ID) {
 				await window.ethereum.request({
 					method: "wallet_switchEthereumChain",
-					params: [{ chainId: "0x5" }],
+					params: [{ chainId: CHAIN_ID }],
 				});
 			}
 			return account[0];

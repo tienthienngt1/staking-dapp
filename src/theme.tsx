@@ -5,7 +5,7 @@ import { red } from "@mui/material/colors";
 const theme = createTheme({
 	typography: {
 		fontFamily: "'Lilita One', cursive",
-		fontWeightBold: 600,
+		fontWeightBold: 400,
 	},
 	palette: {
 		primary: {

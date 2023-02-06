@@ -1,5 +1,6 @@
 import { Button, Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import { CHAIN_ID } from "config";
 import { connectWallet } from "func/connectWallet";
 import { useEffect } from "react";
 declare var window: any;
@@ -21,20 +22,20 @@ const Header = ({ address, setAddress }: HeaderT) => {
 							setAddress(undefined);
 							return;
 						}
-						if (window.ethereum.chainId !== "0x5") {
+						if (window.ethereum.chainId !== CHAIN_ID) {
 							await window.ethereum.request({
 								method: "wallet_switchEthereumChain",
-								params: [{ chainId: "0x5" }],
+								params: [{ chainId: CHAIN_ID }],
 							});
 						}
 						setAddress(account[0]);
 					}
 				);
 				window.ethereum.on("networkChanged", async () => {
-					if (window.ethereum.chainId !== "0x5") {
+					if (window.ethereum.chainId !== CHAIN_ID) {
 						await window.ethereum.request({
 							method: "wallet_switchEthereumChain",
-							params: [{ chainId: "0x5" }],
+							params: [{ chainId: CHAIN_ID }],
 						});
 					}
 				});
@@ -62,7 +63,7 @@ const Header = ({ address, setAddress }: HeaderT) => {
 			</Stack>
 			<Stack direction={"row"} justifyContent={"center"} my={2}>
 				<Typography
-					sx={{ typography: { md: "h2", sm: "h5", color: "orange" } }}
+					sx={{ typography: { md: "h2", sm: "h1", color: "orange" } }}
 				>
 					POOL
 				</Typography>
