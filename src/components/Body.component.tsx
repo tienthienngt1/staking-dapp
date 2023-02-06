@@ -94,7 +94,11 @@ const Body = ({ address, setAddress }: HeaderT) => {
 						borderRadius: 5,
 					}}
 				>
-					<Stack direction={"row"} justifyContent={"space-between"}>
+					<Stack
+						direction={"row"}
+						justifyContent={"space-between"}
+						alignItems={"center"}
+					>
 						<Box
 							component={"img"}
 							src="logo.png"
@@ -112,7 +116,7 @@ const Body = ({ address, setAddress }: HeaderT) => {
 							<Typography variant="h6">
 								StakeToken / StakeToken
 							</Typography>
-							<Typography variant="caption">
+							<Typography variant="body2" gutterBottom>
 								Not Locked
 							</Typography>
 							<Typography
@@ -124,8 +128,13 @@ const Body = ({ address, setAddress }: HeaderT) => {
 									color: "#6f4112",
 									paddingX: 2,
 								}}
+								gutterBottom
 							>
 								7 days
+							</Typography>
+							<Typography variant="caption" align="center">
+								Withdrawing before 7 days, 20% fee will be
+								deducted
 							</Typography>
 						</Box>
 					</Stack>

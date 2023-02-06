@@ -63,7 +63,8 @@ const Header = ({ address, setAddress }: HeaderT) => {
 			</Stack>
 			<Stack direction={"row"} justifyContent={"center"} my={2}>
 				<Typography
-					sx={{ typography: { md: "h2", sm: "h1", color: "orange" } }}
+					variant="h2"
+					sx={{ typography: { color: "orange" } }}
 				>
 					POOL
 				</Typography>
