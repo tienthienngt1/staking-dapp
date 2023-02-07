@@ -1,7 +1,7 @@
-export const CONTRACT_ADDRESS = "0x990350b64d5E140225A4209856C4F03b69796510";
+export const CONTRACT_ADDRESS = "0x72292C9a33d3Ba6317e20f7455e6Cf27D60036fC";
 //request switch chain
 // BNB mainnet "0x38", BNB testnet "0x61", ETH goerli "0x5", ETH mainnet "0x1"
-export const CHAIN_ID = "0x5"; 
+export const CHAIN_ID = "0x5";
 export const ABI = [
 	{ inputs: [], stateMutability: "nonpayable", type: "constructor" },
 	{
@@ -381,6 +381,13 @@ export const ABI = [
 	{
 		inputs: [{ internalType: "uint256", name: "_amount", type: "uint256" }],
 		name: "setProfitStakeByYear",
+		outputs: [],
+		stateMutability: "nonpayable",
+		type: "function",
+	},
+	{
+		inputs: [{ internalType: "bool", name: "_stakingOpen", type: "bool" }],
+		name: "setStaking",
 		outputs: [],
 		stateMutability: "nonpayable",
 		type: "function",
