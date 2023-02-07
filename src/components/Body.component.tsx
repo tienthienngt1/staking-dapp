@@ -103,7 +103,7 @@ const Body = ({ address, setAddress }: HeaderT) => {
 							component={"img"}
 							src="logo.png"
 							alt="logo"
-							sx={{ width: "30%" }}
+							sx={{ width: "100px", height: "100px" }}
 						/>
 						<Box
 							sx={{
