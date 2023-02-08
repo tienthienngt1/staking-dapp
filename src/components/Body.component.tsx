@@ -156,7 +156,7 @@ const Body = ({ address, setAddress }: HeaderT) => {
 							<Typography>RabbitCupid</Typography>
 						</StackConfig>
 						<StackConfig>
-							<Typography>APR</Typography>
+							<Typography>APY</Typography>
 							<Typography>200%</Typography>
 						</StackConfig>
 
