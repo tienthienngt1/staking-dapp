@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 body {
 	background-image: url("/background.png");
+	background-repeat: no-repeat;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: scroll;
