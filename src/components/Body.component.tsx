@@ -85,212 +85,241 @@ const Body = ({ address, setAddress }: HeaderT) => {
 
 	return (
 		<>
-			<Stack direction={"row"} justifyContent={"center"} my={5}>
-				<Box
-					sx={{
-						width: 380,
-						padding: 2,
-						background: "#e25604",
-						borderRadius: 5,
-					}}
-				>
-					<Stack
-						direction={"row"}
-						justifyContent={"space-between"}
-						alignItems={"center"}
+			<Stack
+				direction={{ md: "row", xs: "column" }}
+				justifyContent={"center"}
+				my={5}
+				spacing={1}
+			>
+				<Box>
+					<iframe
+						src="https://app.uniswap.org/#/swap?outputCurrency=0x72292C9a33d3Ba6317e20f7455e6Cf27D60036fC"
+						height="660px"
+						width="100%"
+						style={{
+							border: "0",
+							margin: "0 auto",
+							display: "block",
+							borderRadius: "10px",
+							maxWidth: "600px",
+							minWidth: "500px",
+						}}
+					/>
+				</Box>
+				<Stack justifyContent={"center"}>
+					<Box
+						sx={{
+							minWidth: 380,
+							maxWidth: 500,
+							padding: 2,
+							margin: "0 auto",
+							display: "block",
+							background: "#e25604",
+							borderRadius: 5,
+						}}
 					>
-						<Box
-							component={"img"}
-							src="logo.png"
-							alt="logo"
-							sx={{ width: "100px", height: "100px" }}
-						/>
-						<Box
-							sx={{
-								display: "flex",
-								justifyContent: "center",
-								flexDirection: "column",
-								alignItems: "center",
-							}}
+						<Stack
+							direction={"row"}
+							justifyContent={"space-between"}
+							alignItems={"center"}
 						>
-							<Typography variant="h6">
-								StakeToken / StakeToken
-							</Typography>
-							<Typography variant="body2" gutterBottom>
-								Not Locked
-							</Typography>
-							<Typography
-								variant="subtitle1"
+							<Box
+								component={"img"}
+								src="logo.png"
+								alt="logo"
+								sx={{ width: "100px", height: "100px" }}
+							/>
+							<Box
 								sx={{
-									background: "#dfc010",
-									borderRadius: 5,
-									fontWeight: "600",
-									color: "#6f4112",
-									paddingX: 2,
+									display: "flex",
+									justifyContent: "center",
+									flexDirection: "column",
+									alignItems: "center",
 								}}
-								gutterBottom
 							>
-								7 days
-							</Typography>
-							<Typography variant="caption" align="center">
-								Withdrawing before 7 days, 20% fee will be
-								deducted
-							</Typography>
-						</Box>
-					</Stack>
-					<StackConfig>
-						<Typography>Stake</Typography>
-						<Typography>StakeToken</Typography>
-					</StackConfig>
-					<StackConfig>
-						<Typography>Earn</Typography>
-						<Typography>StakeToken</Typography>
-					</StackConfig>
-					<StackConfig>
-						<Typography>APR</Typography>
-						<Typography>200%</Typography>
-					</StackConfig>
+								<Typography variant="h6">
+									StakeToken / StakeToken
+								</Typography>
+								<Typography variant="body2" gutterBottom>
+									Not Locked
+								</Typography>
+								<Typography
+									variant="subtitle1"
+									sx={{
+										background: "#dfc010",
+										borderRadius: 5,
+										fontWeight: "600",
+										color: "#6f4112",
+										paddingX: 2,
+									}}
+									gutterBottom
+								>
+									7 days
+								</Typography>
+								<Typography variant="caption" align="center">
+									Withdrawing before 7 days, 20% fee will be
+									deducted
+								</Typography>
+							</Box>
+						</Stack>
+						<StackConfig>
+							<Typography>Stake</Typography>
+							<Typography>StakeToken</Typography>
+						</StackConfig>
+						<StackConfig>
+							<Typography>Earn</Typography>
+							<Typography>StakeToken</Typography>
+						</StackConfig>
+						<StackConfig>
+							<Typography>APR</Typography>
+							<Typography>200%</Typography>
+						</StackConfig>
 
-					{/* START CONNECTED */}
-					{address ? (
-						<>
-							<Typography gutterBottom>
-								StakeToken{" "}
-								<span style={{ opacity: "0.6" }}>
-									{" "}
-									&nbsp; EARNED
-								</span>
-							</Typography>
-							<StackConfig>
-								<Harvest address={address} />
+						{/* START CONNECTED */}
+						{address ? (
+							<>
+								<Typography gutterBottom>
+									StakeToken{" "}
+									<span style={{ opacity: "0.6" }}>
+										{" "}
+										&nbsp; EARNED
+									</span>
+								</Typography>
+								<StackConfig>
+									<Harvest address={address} />
+									<LoadingButton
+										variant={"contained"}
+										sx={{ borderRadius: 5 }}
+										disabled={
+											staked && staked > 0 ? false : true
+										}
+										loading={isLoadingHarvest}
+										onClick={handleHarvest}
+									>
+										Harvest
+									</LoadingButton>
+								</StackConfig>
+								<Typography gutterBottom>
+									StakeToken{" "}
+									<span style={{ opacity: "0.6" }}>
+										{" "}
+										&nbsp; STACKED
+									</span>
+								</Typography>
+								<StackConfig>
+									<Typography>Available:</Typography>
+									<Typography>
+										<span style={{ color: "#137c33a3" }}>
+											{balance?.toLocaleString() ?? 0}
+										</span>{" "}
+										&nbsp; StakeToken
+									</Typography>
+								</StackConfig>
+								<StackConfig>
+									<Typography>Staked:</Typography>
+									<Typography>
+										<span style={{ color: "#137c33a3" }}>
+											{staked && staked.toLocaleString()}
+										</span>{" "}
+										&nbsp; StakeToken
+									</Typography>
+								</StackConfig>
+								<StackConfig>
+									<TextField
+										id="outlined-basic"
+										variant="outlined"
+										size="small"
+										sx={{ width: "70%" }}
+										value={stakeValue}
+										onChange={(e) =>
+											setStakeValue(e.target.value)
+										}
+									/>
+									<Button
+										variant="contained"
+										onClick={() =>
+											setStakeValue(
+												balance?.toString() ?? ""
+											)
+										}
+									>
+										all
+									</Button>
+									<LoadingButton
+										variant="contained"
+										sx={{
+											width: "30%",
+											borderRadius: 5,
+											marginLeft: 1,
+										}}
+										loading={isLoadingStake}
+										onClick={handleStake}
+									>
+										Stake
+									</LoadingButton>
+								</StackConfig>
 								<LoadingButton
-									variant={"contained"}
-									sx={{ borderRadius: 5 }}
+									loading={isLoadingWithdraw}
+									onClick={handleWithdraw}
+									variant="contained"
+									sx={{ width: "100%", borderRadius: 5 }}
 									disabled={
 										staked && staked > 0 ? false : true
 									}
-									loading={isLoadingHarvest}
-									onClick={handleHarvest}
 								>
-									Harvest
+									Withdraw
 								</LoadingButton>
-							</StackConfig>
-							<Typography gutterBottom>
-								StakeToken{" "}
-								<span style={{ opacity: "0.6" }}>
-									{" "}
-									&nbsp; STACKED
-								</span>
-							</Typography>
-							<StackConfig>
-								<Typography>Available:</Typography>
-								<Typography>
-									<span style={{ color: "#137c33a3" }}>
-										{balance?.toLocaleString() ?? 0}
-									</span>{" "}
-									&nbsp; StakeToken
-								</Typography>
-							</StackConfig>
-							<StackConfig>
-								<Typography>Staked:</Typography>
-								<Typography>
-									<span style={{ color: "#137c33a3" }}>
-										{staked && staked.toLocaleString()}
-									</span>{" "}
-									&nbsp; StakeToken
-								</Typography>
-							</StackConfig>
-							<StackConfig>
-								<TextField
-									id="outlined-basic"
-									variant="outlined"
-									size="small"
-									sx={{ width: "70%" }}
-									value={stakeValue}
-									onChange={(e) =>
-										setStakeValue(e.target.value)
-									}
-								/>
-								<Button
-									variant="contained"
-									onClick={() =>
-										setStakeValue(balance?.toString() ?? "")
-									}
-								>
-									all
-								</Button>
-								<LoadingButton
-									variant="contained"
-									sx={{
-										width: "30%",
-										borderRadius: 5,
-										marginLeft: 1,
-									}}
-									loading={isLoadingStake}
-									onClick={handleStake}
-								>
-									Stake
-								</LoadingButton>
-							</StackConfig>
-							<LoadingButton
-								loading={isLoadingWithdraw}
-								onClick={handleWithdraw}
+								{/* END CONNECTED */}
+							</>
+						) : (
+							<Button
 								variant="contained"
 								sx={{ width: "100%", borderRadius: 5 }}
-								disabled={staked && staked > 0 ? false : true}
+								onClick={handleConnect}
 							>
-								Withdraw
-							</LoadingButton>
-							{/* END CONNECTED */}
-						</>
-					) : (
-						<Button
-							variant="contained"
-							sx={{ width: "100%", borderRadius: 5 }}
-							onClick={handleConnect}
-						>
-							Connect Wallet
-						</Button>
-					)}
-					{address && (
-						<>
-							<Divider sx={{ margin: 3 }} />
-							<StackConfig>
-								<Typography>Total Staked</Typography>
-								<Typography>
-									<span
-										style={{
-											color: "#137c33a3",
-										}}
-									>
-										{poolStake &&
-											rewardPool &&
-											Math.floor(
-												poolStake - rewardPool
-											).toLocaleString()}{" "}
-									</span>
-									StakeToken
-								</Typography>
-							</StackConfig>
-							<StackConfig>
-								<Typography>Rewards Pool</Typography>
-								<Typography>
-									<span
-										style={{
-											color: "#137c33a3",
-										}}
-									>
-										{rewardPool &&
-											Math.floor(
-												rewardPool
-											).toLocaleString()}{" "}
-									</span>
-									StakeToken
-								</Typography>
-							</StackConfig>
-						</>
-					)}
-				</Box>
+								Connect Wallet
+							</Button>
+						)}
+						{address && (
+							<>
+								<Divider sx={{ margin: 3 }} />
+								<StackConfig>
+									<Typography>Total Staked</Typography>
+									<Typography>
+										<span
+											style={{
+												color: "#137c33a3",
+											}}
+										>
+											{poolStake &&
+												rewardPool &&
+												Math.floor(
+													poolStake - rewardPool
+												).toLocaleString()}{" "}
+										</span>
+										StakeToken
+									</Typography>
+								</StackConfig>
+								<StackConfig>
+									<Typography>Rewards Pool</Typography>
+									<Typography>
+										<span
+											style={{
+												color: "#137c33a3",
+											}}
+										>
+											{rewardPool &&
+												Math.floor(
+													rewardPool
+												).toLocaleString()}{" "}
+										</span>
+										StakeToken
+									</Typography>
+								</StackConfig>
+							</>
+						)}
+					</Box>
+				</Stack>
 			</Stack>
 		</>
 	);
