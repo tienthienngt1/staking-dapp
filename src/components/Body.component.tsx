@@ -15,6 +15,7 @@ import {
 import { getPoolStake } from "../func/getInfo";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Harvest from "./Harvest.component";
+import Grid from "@mui/material/Unstable_Grid2";
 const Body = ({ address, setAddress }: HeaderT) => {
 	//state
 	const [balance, setBalance] = useState<number | undefined>();
@@ -85,28 +86,9 @@ const Body = ({ address, setAddress }: HeaderT) => {
 
 	return (
 		<>
-			<Stack
-				direction={{ md: "row", xs: "column" }}
-				justifyContent={"center"}
-				my={5}
-				spacing={1}
-			>
-				<Box>
-					<iframe
-						src="https://app.uniswap.org/#/swap?outputCurrency=0x72292C9a33d3Ba6317e20f7455e6Cf27D60036fC"
-						height="660px"
-						width="100%"
-						style={{
-							border: "0",
-							margin: "0 auto",
-							display: "block",
-							borderRadius: "10px",
-							maxWidth: "600px",
-							minWidth: "500px",
-						}}
-					/>
-				</Box>
-				<Stack justifyContent={"center"}>
+			<Grid container sx={{ display: "flex", justifyContent: "center" }}>
+				<Grid md={6}></Grid>
+				<Grid md={6}>
 					<Box
 						sx={{
 							minWidth: 380,
@@ -138,7 +120,7 @@ const Body = ({ address, setAddress }: HeaderT) => {
 								}}
 							>
 								<Typography variant="h6">
-									StakeToken / StakeToken
+									RabbitCupid / RabbitCupid
 								</Typography>
 								<Typography variant="body2" gutterBottom>
 									Not Locked
@@ -164,11 +146,11 @@ const Body = ({ address, setAddress }: HeaderT) => {
 						</Stack>
 						<StackConfig>
 							<Typography>Stake</Typography>
-							<Typography>StakeToken</Typography>
+							<Typography>RabbitCupid</Typography>
 						</StackConfig>
 						<StackConfig>
 							<Typography>Earn</Typography>
-							<Typography>StakeToken</Typography>
+							<Typography>RabbitCupid</Typography>
 						</StackConfig>
 						<StackConfig>
 							<Typography>APR</Typography>
@@ -179,7 +161,7 @@ const Body = ({ address, setAddress }: HeaderT) => {
 						{address ? (
 							<>
 								<Typography gutterBottom>
-									StakeToken{" "}
+									RabbitCupid{" "}
 									<span style={{ opacity: "0.6" }}>
 										{" "}
 										&nbsp; EARNED
@@ -200,7 +182,7 @@ const Body = ({ address, setAddress }: HeaderT) => {
 									</LoadingButton>
 								</StackConfig>
 								<Typography gutterBottom>
-									StakeToken{" "}
+									RabbitCupid{" "}
 									<span style={{ opacity: "0.6" }}>
 										{" "}
 										&nbsp; STACKED
@@ -212,7 +194,7 @@ const Body = ({ address, setAddress }: HeaderT) => {
 										<span style={{ color: "#137c33a3" }}>
 											{balance?.toLocaleString() ?? 0}
 										</span>{" "}
-										&nbsp; StakeToken
+										&nbsp; RabbitCupid
 									</Typography>
 								</StackConfig>
 								<StackConfig>
@@ -221,7 +203,7 @@ const Body = ({ address, setAddress }: HeaderT) => {
 										<span style={{ color: "#137c33a3" }}>
 											{staked && staked.toLocaleString()}
 										</span>{" "}
-										&nbsp; StakeToken
+										&nbsp; RabbitCupid
 									</Typography>
 								</StackConfig>
 								<StackConfig>
@@ -282,7 +264,7 @@ const Body = ({ address, setAddress }: HeaderT) => {
 						)}
 						{address && (
 							<>
-								<Divider sx={{ margin: 3 }} />
+								<Divider sx={{ margin: "30px 0" }} />
 								<StackConfig>
 									<Typography>Total Staked</Typography>
 									<Typography>
@@ -297,30 +279,14 @@ const Body = ({ address, setAddress }: HeaderT) => {
 													poolStake - rewardPool
 												).toLocaleString()}{" "}
 										</span>
-										StakeToken
-									</Typography>
-								</StackConfig>
-								<StackConfig>
-									<Typography>Rewards Pool</Typography>
-									<Typography>
-										<span
-											style={{
-												color: "#137c33a3",
-											}}
-										>
-											{rewardPool &&
-												Math.floor(
-													rewardPool
-												).toLocaleString()}{" "}
-										</span>
-										StakeToken
+										RabbitCupid
 									</Typography>
 								</StackConfig>
 							</>
 						)}
 					</Box>
-				</Stack>
-			</Stack>
+				</Grid>
+			</Grid>
 		</>
 	);
 };
