@@ -64,7 +64,8 @@ const Header = ({ address, setAddress }: HeaderT) => {
 			<Stack direction={"row"} justifyContent={"center"} my={2}>
 				<Typography
 					align="center"
-					sx={{ typography: { md: "h2", xs: "h3", color: "orange" } }}
+					sx={{ typography: { md: "h2", xs: "h3" } }}
+					className="title"
 				>
 					$RABBITCUPID STAKING POOL
 				</Typography>

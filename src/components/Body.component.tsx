@@ -86,7 +86,11 @@ const Body = ({ address, setAddress }: HeaderT) => {
 
 	return (
 		<>
-			<Grid container sx={{ display: "flex", justifyContent: "center" }}>
+			<Grid
+				container
+				sx={{ display: "flex", justifyContent: "center" }}
+				my={5}
+			>
 				<Grid md={6}></Grid>
 				<Grid md={6}>
 					<Box
@@ -94,7 +98,6 @@ const Body = ({ address, setAddress }: HeaderT) => {
 							minWidth: 380,
 							maxWidth: 500,
 							padding: 2,
-							margin: "0 auto",
 							display: "block",
 							background: "#e25604",
 							borderRadius: 5,
