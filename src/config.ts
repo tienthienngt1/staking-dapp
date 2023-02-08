@@ -1,7 +1,7 @@
-export const CONTRACT_ADDRESS = "0x72292C9a33d3Ba6317e20f7455e6Cf27D60036fC";
+export const CONTRACT_ADDRESS = "0x9C89203A8492302947e6632309D0bDE87F9b378C";
 //request switch chain
 // BNB mainnet "0x38", BNB testnet "0x61", ETH goerli "0x5", ETH mainnet "0x1"
-export const CHAIN_ID = "0x5"; // edit here
+export const CHAIN_ID = "0x38"; // edit here
 export const ABI = [
 	{ inputs: [], stateMutability: "nonpayable", type: "constructor" },
 	{

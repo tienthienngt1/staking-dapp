@@ -285,6 +285,22 @@ const Body = ({ address, setAddress }: HeaderT) => {
 										RabbitCupid
 									</Typography>
 								</StackConfig>
+								<StackConfig>
+									<Typography>Rewards Pool</Typography>
+									<Typography>
+										<span
+											style={{
+												color: "#137c33a3",
+											}}
+										>
+											{rewardPool &&
+												Math.floor(
+													rewardPool
+												).toLocaleString()}{" "}
+										</span>
+										RabbitCupid
+									</Typography>
+								</StackConfig>
 							</>
 						)}
 					</Box>
